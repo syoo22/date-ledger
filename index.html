@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f5f0">
+<title>우리의 데이트 정산 | Blue Edition</title>
+<style>
+:root{--bg:#f7f5f0;--paper:#fffefa;--ink:#28372f;--muted:#81877f;--green:#426b55;--green2:#e8efe8;--line:#e8e5dc;--rose:#b66f72;--gold:#c19a61;--shadow:0 10px 30px #28372f0a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.025em}button,input,select{font:inherit}button{cursor:pointer;border:0} .wrap{max-width:850px;margin:auto;padding:20px 16px 60px}.hero{background:#304b3c;color:#fffefa;border-radius:28px;padding:25px 23px 23px;position:relative;overflow:hidden}.hero:after{content:"♡";position:absolute;right:17px;top:4px;font-size:100px;color:#ffffff0d;transform:rotate(12deg)}.eyebrow{font-size:11px;letter-spacing:.16em;color:#c7d7c9;font-weight:700}.hero h1{font-size:27px;line-height:1.25;margin:9px 0 7px;font-weight:750}.hero p{font-size:13px;color:#d8e3d9;margin:0}.people{display:flex;gap:8px;margin-top:18px;position:relative;z-index:1}.person{border:1px solid #ffffff45;border-radius:100px;padding:7px 12px;font-size:12px;color:#f7f8f3}.person b{color:#fff}.sync{font-size:11px;margin-top:15px;color:#c7d7c9;position:relative;z-index:1}.nav{display:flex;gap:7px;margin:17px 0;overflow:auto;padding-bottom:2px}.nav button{white-space:nowrap;padding:10px 14px;border-radius:100px;background:transparent;color:var(--muted);font-size:13px}.nav button.active{background:var(--ink);color:white}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--paper);border:1px solid var(--line);border-radius:19px;padding:15px;box-shadow:var(--shadow)}.stat .label{font-size:12px;color:var(--muted)}.stat .value{font-size:22px;font-weight:750;margin-top:7px;letter-spacing:-.045em;word-break:keep-all}.stat .sub{font-size:11px;color:var(--muted);margin-top:5px}.settle{margin-top:11px;padding:18px;background:#e8efe8;border-radius:20px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:23px 2px 11px}.section-head h2{font-size:16px;margin:0}.section-head span{font-size:12px;color:var(--muted)}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field.full{grid-column:1/-1}.field label{font-size:12px;color:var(--muted)}.field input,.field select{display:block;width:100%;min-width:0;max-width:100%;box-sizing:border-box;border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px;color:var(--ink);min-height:44px;outline-color:var(--green);font-size:16px}.primary{background:var(--green);color:white;border-radius:13px;padding:13px 16px;font-weight:700}.secondary{background:var(--green2);color:var(--green);border-radius:12px;padding:10px 12px;font-weight:650}.ghost{background:transparent;color:var(--muted);padding:8px;font-size:12px}.danger{color:var(--rose)}.entry{display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.entry:last-child{border-bottom:0}.emoji{width:42px;height:42px;border-radius:14px;background:#f1eee5;display:grid;place-items:center;font-size:19px;flex-shrink:0}.entry-main{min-width:0;flex:1}.entry-title{font-weight:700;font-size:14px;overflow-wrap:anywhere}.entry-meta{font-size:11px;color:var(--muted);margin-top:5px}.entry-right{text-align:right;flex-shrink:0}.amount{font-weight:750;font-size:14px}.actions{display:flex;justify-content:flex-end;gap:4px;margin-top:4px}.actions button{font-size:11px;color:var(--muted);background:transparent;padding:4px}.empty{text-align:center;padding:28px 10px;color:var(--muted);font-size:13px;line-height:1.8}.pill{display:inline-flex;border-radius:100px;padding:5px 8px;background:#f3eee4;color:#92774d;font-size:10px}.summaryrow{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #d8e2d8;font-size:13px}.summaryrow:last-child{border-bottom:0}.summaryrow strong{font-size:14px}.monthbar{display:flex;gap:9px;align-items:center}.monthbar input{flex:1}.barrow{display:grid;grid-template-columns:60px 1fr 90px;gap:8px;align-items:center;margin:14px 0;font-size:12px}.barbg{height:8px;background:#ece9e1;border-radius:99px;overflow:hidden}.barfill{height:100%;background:var(--green);border-radius:99px}.dateitem{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);gap:10px}.dateitem:last-child{border-bottom:0}.dateitem button{background:transparent;text-align:left;color:var(--ink);padding:0;flex:1}.dateitem small{display:block;color:var(--muted);margin-top:5px}.hidden{display:none!important}.foot{font-size:11px;color:var(--muted);line-height:1.7;text-align:center;margin:22px 12px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#28372f;color:white;padding:12px 16px;border-radius:100px;font-size:12px;box-shadow:var(--shadow);z-index:10;max-width:90%;text-align:center}.modalback{position:fixed;inset:0;background:#18251dcc;display:grid;place-items:center;padding:18px;z-index:20}.modal{width:min(100%,520px);max-height:90vh;overflow:auto;background:var(--paper);border-radius:22px;padding:20px}.modal h2{font-size:18px;margin:0 0 10px}.modal p{font-size:12px;color:var(--muted);line-height:1.7}.modal-actions{display:flex;gap:8px;margin-top:16px}.modal-actions>*{flex:1}.notice{font-size:12px;line-height:1.7;padding:12px;border-radius:12px;background:#f6efe3;color:#7e6845;margin-top:12px}.linklike{color:var(--green);text-decoration:underline;cursor:pointer}
+@media(min-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.wrap{padding-top:28px}.hero{padding:30px}.hero h1{font-size:31px}}@media(max-width:560px){.wrap{padding:14px 12px 40px}.hero{padding:22px 18px}.formgrid{grid-template-columns:minmax(0,1fr)}.field.full{grid-column:auto}.field input[type="date"]{text-align:left;min-width:0}.card{padding:14px}.stat{padding:13px}.stat .value{font-size:19px}.barrow{grid-template-columns:58px minmax(0,1fr) 78px;gap:7px}}
+
+/* Mobile form overflow fix */
+.formgrid > .field { min-width: 0; }
+.field input, .field select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.field input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+@media (max-width: 560px) {
+  .formgrid { grid-template-columns: minmax(0, 1fr); }
+  .formgrid > .field, .field.full { grid-column: 1 / -1; min-width: 0; }
+  .card, .formgrid { min-width: 0; }
+}
+
+
+/* Alternate visual theme: clean Korean fintech-inspired UI */
+:root{
+  --bg:#f5f7fa;--paper:#ffffff;--ink:#191f28;--muted:#6b7684;
+  --green:#3182f6;--green2:#e8f3ff;--line:#e5e8eb;--rose:#e5484d;
+  --gold:#f2a900;--shadow:0 2px 10px rgba(15,23,42,.045);
+}
+*{letter-spacing:-.035em}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+.wrap{max-width:900px;padding:20px 18px 64px}
+.hero{
+  background:linear-gradient(135deg,#1b66d8 0%,#3182f6 55%,#75b7ff 100%);
+  color:#fff;border-radius:26px;padding:28px 26px 25px;
+  box-shadow:0 10px 28px rgba(49,130,246,.14)
+}
+.hero:after{content:"₩";font-size:140px;font-weight:800;right:24px;top:-12px;color:rgba(255,255,255,.10);transform:rotate(10deg)}
+.eyebrow{color:rgba(255,255,255,.78);letter-spacing:.12em;font-size:11px}
+.hero h1{font-size:29px;letter-spacing:-.06em;margin:12px 0 8px}
+.hero p{color:rgba(255,255,255,.84);font-size:14px}
+.people{gap:8px;margin-top:20px}
+.person{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);padding:8px 13px}
+.person b{color:white}
+.sync{color:rgba(255,255,255,.82)}
+.nav{gap:6px;margin:17px 0 20px}
+.nav button{border-radius:12px;padding:11px 14px;font-weight:650;color:#687385}
+.nav button.active{background:#191f28;color:white}
+.grid{gap:12px}
+.stat{border:0;border-radius:20px;padding:18px 17px;box-shadow:var(--shadow)}
+.stat .label{font-size:12px;color:#6b7684;font-weight:600}
+.stat .value{font-size:24px;color:#191f28;margin-top:10px}
+.stat .sub{color:#8b95a1}
+.settle{background:#e8f3ff;border:1px solid #d8eaff;border-radius:22px;padding:20px;margin-top:12px;transition:background .25s ease,transform .25s ease}
+.settle .eyebrow{color:#3182f6}
+#settlementText{color:#1b4f9c}
+#settlementSub{color:#59718e!important}
+.section-head{margin:26px 2px 12px}
+.section-head h2{font-size:17px;font-weight:750;letter-spacing:-.045em}
+.section-head span{color:#8b95a1}
+.card{border:0;border-radius:22px;padding:18px;box-shadow:var(--shadow)}
+.field{gap:8px}
+.field label{font-size:12px;color:#6b7684;font-weight:650}
+.field input,.field select{
+  border:1px solid #dce1e7;background:#fff;border-radius:14px;
+  padding:13px 14px;min-height:50px;color:#191f28;
+  box-shadow:inset 0 1px 1px rgba(15,23,42,.015);
+}
+.field input:focus,.field select:focus{outline:3px solid rgba(49,130,246,.13);border-color:#3182f6}
+.primary{background:#3182f6;border-radius:14px;padding:15px 16px;font-weight:750;box-shadow:0 4px 9px rgba(49,130,246,.12)}
+.primary:active{transform:translateY(1px)}
+.secondary{background:#e8f3ff;color:#1b66d8;border-radius:12px;padding:11px 13px}
+.ghost{color:#687385}
+.entry{padding:15px 0;border-color:#eef0f3}
+.emoji{background:#f2f4f6;border-radius:14px}
+.entry-title{font-size:14px}
+.entry-meta{color:#8b95a1}
+.amount{font-size:15px}
+.pill{background:#fff4d6;color:#8b6400}
+.summaryrow{border-color:#d4e7ff}
+.barbg{background:#edf0f4}
+.barfill{background:#3182f6}
+.dateitem{border-color:#eef0f3}
+.dateitem small{color:#8b95a1}
+.notice{background:#f3f7fc;color:#5e6b7c;border-radius:14px}
+.foot{color:#8b95a1}
+.modal{border-radius:24px}
+.toast{background:#191f28}
+@media(max-width:560px){
+ .wrap{padding:14px 12px 42px}
+ .hero{padding:23px 19px;border-radius:22px}
+ .hero h1{font-size:26px}
+ .hero:after{font-size:100px;right:12px;top:4px}
+ .formgrid{grid-template-columns:minmax(0,1fr)}
+ .formgrid>.field,.field.full{grid-column:1/-1;min-width:0}
+ .card{padding:15px}
+ .stat{padding:14px}
+ .stat .value{font-size:20px}
+ .nav{overflow-x:auto}
+ .nav button{padding:10px 12px}
+ .field input[type="date"]{font-size:16px;padding:12px;max-width:100%;width:100%;min-width:0;box-sizing:border-box}
+}
+
+
+/* Motion and icon polish */
+@keyframes popIn {0%{opacity:0;transform:translateY(8px) scale(.985)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes softPulse {0%,100%{box-shadow:0 0 0 0 rgba(49,130,246,0)}50%{box-shadow:0 0 0 5px rgba(49,130,246,.10)}}
+@keyframes countGlow {0%{transform:translateY(4px);opacity:.65}100%{transform:translateY(0);opacity:1}}
+@keyframes heartPop {0%{transform:scale(.5) rotate(-12deg);opacity:0}65%{transform:scale(1.15) rotate(5deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes barGrow {from{width:0}to{width:var(--bar-width)}}
+.stat,.settle,.card{animation:popIn .32s ease-out both}
+.stat:nth-child(2){animation-delay:.04s}.stat:nth-child(3){animation-delay:.08s}.stat:nth-child(4){animation-delay:.12s}
+.nav button{transition:background .18s ease,color .18s ease,transform .18s ease}
+.nav button:active{transform:scale(.97)}
+.primary,.secondary,.ghost{transition:transform .16s ease,filter .16s ease,box-shadow .16s ease}
+.primary:hover{filter:brightness(1.04);box-shadow:0 6px 15px rgba(49,130,246,.2)}
+.primary:active,.secondary:active{transform:scale(.985)}
+.field input,.field select{transition:border-color .18s ease,box-shadow .18s ease}
+.field input:focus,.field select:focus{box-shadow:0 0 0 4px rgba(49,130,246,.11)}
+.entry{animation:popIn .25s ease-out both;transition:background .18s ease;padding-left:8px;padding-right:8px;border-radius:14px}
+.entry:hover{background:#f7faff}
+.emoji{transition:transform .2s ease,background .2s ease}
+.entry:hover .emoji{transform:translateY(-2px) rotate(-4deg);background:#e8f3ff}
+.barfill{animation:barGrow .65s cubic-bezier(.2,.8,.2,1) both;width:var(--bar-width)}
+#total,#paidA,#paidB,#share,#monthTotal,#monthDates{animation:countGlow .28s ease-out}
+.settle.is-balanced{background:linear-gradient(135deg,#e8f8ef,#e8f3ff)}
+.settle.is-balanced .eyebrow{color:#248a53}
+.balance-heart{display:inline-block;margin-right:5px;animation:heartPop .45s cubic-bezier(.2,.8,.2,1) both;color:#e54876}
+.toast{animation:popIn .22s ease-out}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+
+/* Refined settlement panel: status, icon, and subtle motion */
+.settle-card{
+  position:relative;isolation:isolate;overflow:hidden;
+  padding:22px 22px 17px!important;
+  background:linear-gradient(120deg,#edf5ff 0%,#e7f1ff 54%,#f2f7ff 100%);
+  border:1px solid #d5e7ff;
+  border-radius:24px;
+  box-shadow:0 8px 24px rgba(49,130,246,.07);
+}
+.settle-card:before{
+  content:"";position:absolute;z-index:-1;right:-42px;top:-62px;width:190px;height:190px;
+  border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.85),rgba(255,255,255,0) 68%);
+  pointer-events:none;
+}
+.settle-top{display:flex;align-items:center;gap:12px;position:relative}
+.settle-icon{
+  width:48px;height:48px;flex:0 0 48px;border-radius:17px;
+  display:grid;place-items:center;color:#2878e8;
+  background:rgba(255,255,255,.88);border:1px solid rgba(49,130,246,.12);
+  box-shadow:0 4px 12px rgba(49,130,246,.08);
+  animation:settleIconIn .42s cubic-bezier(.2,.8,.2,1) both;
+}
+.settle-icon svg{width:25px;height:25px}
+.settle-heading{min-width:0;flex:1}
+.settle-card .eyebrow{font-size:10px;font-weight:850;letter-spacing:.16em;color:#6481a7!important}
+.settle-kicker{font-size:12px;font-weight:650;color:#526a89;margin-top:4px}
+.settle-status{
+  flex-shrink:0;display:inline-flex;align-items:center;gap:5px;
+  padding:6px 9px;border-radius:999px;background:#ffffffb8;
+  color:#60758f;font-size:10px;font-weight:750;border:1px solid #ffffff;
+}
+.settle-status:before{content:"";width:5px;height:5px;border-radius:50%;background:#9aa9bc}
+.settle-title{
+  color:#174b98;font-size:clamp(17px,2.5vw,21px);font-weight:800;
+  line-height:1.5;letter-spacing:-.045em;margin-top:17px;
+  overflow-wrap:anywhere;animation:settleTextIn .35s ease-out both;
+}
+.settle-sub{color:#5e7695!important;font-size:13px;line-height:1.65;margin-top:5px;max-width:580px}
+.settle-bottom{
+  display:flex;align-items:center;justify-content:flex-end;gap:12px;
+  flex-wrap:wrap;border-top:1px solid rgba(75,125,190,.14);
+  margin-top:18px;padding-top:14px;
+}
+.settle-hint{display:flex;align-items:center;gap:7px;color:#69809c;font-size:11px;line-height:1.5}
+.settle-hint-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#77a9ef;box-shadow:0 0 0 4px rgba(119,169,239,.13)}
+.settle-copy{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 12px!important;background:#fff!important;color:#246ed0!important;border:1px solid #d7e7fb;box-shadow:0 2px 6px rgba(40,104,190,.05);font-size:12px;white-space:nowrap}
+.settle-copy svg{width:15px;height:15px}
+.settle-copy:hover{transform:translateY(-1px);box-shadow:0 5px 12px rgba(40,104,190,.12)}
+.settle-card.needs-transfer .settle-icon{color:#2878e8;animation:settleIconIn .42s cubic-bezier(.2,.8,.2,1) both,settleNudge 3s ease-in-out 1s infinite}
+.settle-card.needs-transfer .settle-status{background:#fff0d9;color:#996313;border-color:#ffe7bd}
+.settle-card.needs-transfer .settle-status:before{background:#e8a23a}
+.settle-card.is-balanced{background:linear-gradient(120deg,#eaf9f0 0%,#e7f7ef 55%,#f2fbf6 100%);border-color:#d1f0df}
+.settle-card.is-balanced .settle-icon{color:#218653;background:#fff;border-color:#d7f1e2}
+.settle-card.is-balanced .settle-title{color:#187448}
+.settle-card.is-balanced .eyebrow{color:#4f9774!important}
+.settle-card.is-balanced .settle-status{background:#d9f5e5;color:#21784c;border-color:#c8edd8}
+.settle-card.is-balanced .settle-status:before{background:#2eaa69}
+.settle-card.is-balanced .settle-hint-dot{background:#39ad72;box-shadow:0 0 0 4px rgba(57,173,114,.13)}
+.settle-card.is-pending .settle-title{color:#34465e}
+.settle-card.is-pending .settle-icon{color:#7c93af}
+.settle-card.is-pending .settle-status{background:#fff;color:#718198}
+.balance-heart{color:#e65d86;display:inline-block;margin-right:7px;animation:heartPop .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes settleIconIn{from{opacity:0;transform:translateY(5px) scale(.85)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes settleTextIn{from{opacity:.45;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@keyframes settleNudge{0%,88%,100%{transform:translateX(0)}92%{transform:translateX(2px)}96%{transform:translateX(-2px)}}
+@media(max-width:560px){
+ .settle-card{padding:17px 15px 14px!important;border-radius:21px}
+ .settle-icon{width:43px;height:43px;flex-basis:43px;border-radius:15px}
+ .settle-icon svg{width:23px;height:23px}
+ .settle-status{font-size:9px;padding:5px 7px}
+ .settle-title{font-size:17px;margin-top:15px}
+ .settle-bottom{align-items:flex-start}
+ .settle-hint{display:none}
+ .settle-copy{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .settle-icon,.settle-title,.settle-card.needs-transfer .settle-icon{animation:none!important}
+}
+
+
+/* Couple diary + mobile app interaction upgrade */
+.nav-icon{display:none;width:19px;height:19px}
+.nav-icon svg{width:19px;height:19px;display:block}
+.nav button{display:flex;align-items:center;justify-content:center;gap:7px;transition:transform .18s ease,background .18s ease,color .18s ease}
+.nav button:active{transform:scale(.96)}
+.history-intro{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:23px 22px;margin:2px 0 13px;border-radius:23px;background:linear-gradient(125deg,#eaf3ff 0%,#f7eaf0 100%);border:1px solid #e1eaf8}
+.history-intro .eyebrow{color:#6d8ebd}
+.history-intro h2{margin:7px 0 5px;font-size:21px;letter-spacing:-.055em}
+.history-intro p{margin:0;color:#687b93;font-size:12px;line-height:1.6}
+.history-heart{font-size:66px;line-height:1;color:#d985a4;opacity:.7;transform:rotate(10deg);animation:heartPop .55s ease-out both}
+.history-overview{margin-bottom:8px}
+.history-overview .stat{min-width:0}
+.history-overview .value{font-size:20px}
+.timeline-card{display:flex;width:100%;align-items:center;gap:12px;padding:14px 3px;background:transparent;text-align:left;color:var(--ink);border-bottom:1px solid #edf0f4;transition:background .18s ease,transform .18s ease;border-radius:14px}
+.timeline-card:last-child{border-bottom:0}
+.timeline-card:active{transform:scale(.99)}
+.timeline-card.selected{background:#f0f6ff;padding-left:9px;padding-right:9px}
+.timeline-date{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:0 0 49px;height:55px;border-radius:15px;background:#edf4ff;color:#2878e8}
+.timeline-day{font-size:21px;font-weight:800;line-height:1.1}
+.timeline-month{font-size:9px;margin-top:4px;color:#6686b1}
+.timeline-main{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
+.timeline-main b{font-size:13px}
+.timeline-main small{font-size:10px;color:#8a95a3;line-height:1.5}
+.timeline-cats{margin-left:4px}
+.timeline-main em{font-style:normal;font-size:10px;color:#b17b2e;font-weight:700}
+.timeline-main em.done{color:#238653}
+.timeline-total{display:flex;flex-direction:column;align-items:flex-end;gap:5px;white-space:nowrap;font-size:13px;font-weight:800}
+.timeline-total small{font-size:21px;color:#9aa4b1;font-weight:400;line-height:1}
+.detail-hero{background:linear-gradient(130deg,#eaf3ff,#f4f0ff);border-radius:17px;padding:16px;margin-bottom:12px}
+.detail-date{display:flex;align-items:center;gap:10px}
+.detail-calendar{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:#fff;color:#3182f6;font-size:22px}
+.detail-date b{display:block;font-size:14px}
+.detail-date small{display:block;margin-top:3px;font-size:10px;color:#77869b}
+.detail-hero>strong{display:block;margin-top:17px;font-size:25px;letter-spacing:-.05em}
+.detail-hero>small{display:block;margin-top:3px;font-size:11px;color:#77869b}
+.detail-balanced{background:linear-gradient(130deg,#e9f8ef,#eaf3ff)}
+.detail-totals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0}
+.detail-totals>div{padding:11px 9px;border-radius:13px;background:#f6f8fb;min-width:0}
+.detail-totals span{display:block;font-size:10px;color:#7d8998}
+.detail-totals b{display:block;margin-top:6px;font-size:13px;overflow-wrap:anywhere}
+.detail-settlement{padding:13px;border:1px solid #dceaff;border-radius:15px;background:#f4f8ff}
+.detail-status{display:inline-flex;padding:4px 7px;border-radius:99px;background:#e4efff;color:#2878e8;font-size:10px;font-weight:750}
+.detail-settlement>b{display:block;margin-top:8px;font-size:14px;line-height:1.5}
+.detail-settlement>small{display:block;margin-top:4px;color:#77869b;font-size:11px;line-height:1.5}
+.detail-entry-list{margin-top:9px}
+.detail-entry{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #edf0f4}
+.detail-entry:last-child{border-bottom:0}
+.detail-entry-icon{display:grid;place-items:center;flex:0 0 37px;height:37px;border-radius:12px;background:#f2f5f9;font-size:17px}
+.detail-entry-main{min-width:0;flex:1}
+.detail-entry-main b{display:block;font-size:12px;overflow-wrap:anywhere}
+.detail-entry-main small{display:block;margin-top:4px;font-size:10px;color:#8a95a3}
+.detail-entry>strong{font-size:12px;white-space:nowrap}
+.detail-copy{width:100%;margin-top:12px}
+.insight-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:8px}
+.insight-card{min-width:0;padding:15px;border-radius:18px;background:#fff;box-shadow:var(--shadow);border:1px solid #edf0f4}
+.insight-wide{grid-column:1/-1;background:linear-gradient(120deg,#fff,#f7faff)}
+.insight-icon{display:grid;place-items:center;width:32px;height:32px;border-radius:11px;font-size:20px;font-weight:750;margin-bottom:12px}
+.insight-icon.blue{background:#e8f3ff;color:#3182f6}
+.insight-icon.pink{background:#fceaf1;color:#d45d8b}
+.insight-icon.green{background:#e6f7ed;color:#218653}
+.insight-label{font-size:11px;color:#758194}
+.insight-card strong{display:block;margin-top:6px;font-size:19px;letter-spacing:-.04em;overflow-wrap:anywhere}
+.insight-card small{display:block;margin-top:5px;font-size:10px;color:#8a95a3;line-height:1.5}
+.quick-add{display:none}
+@media(max-width:560px){
+ body{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+ .wrap{padding:12px 12px 34px}
+ .hero{border-radius:23px}
+ .nav{position:fixed;z-index:15;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom));margin:0;padding:7px 6px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;border:1px solid #e7ebf1;border-radius:20px;background:rgba(255,255,255,.94);box-shadow:0 8px 28px rgba(25,31,40,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+ .nav button{flex-direction:column;gap:3px;padding:7px 2px;border-radius:13px;font-size:9px;color:#818b99;min-width:0}
+ .nav-icon{display:block}
+ .nav button.active{background:#eaf3ff;color:#216ed2}
+ .nav button.active .nav-icon{transform:translateY(-1px)}
+ .quick-add{position:fixed;z-index:14;right:18px;bottom:calc(83px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:7px;padding:12px 16px;border-radius:99px;background:#3182f6;color:#fff;box-shadow:0 7px 20px rgba(49,130,246,.3);font-size:12px;font-weight:750;transition:transform .18s ease,box-shadow .18s ease}
+ .quick-add span{font-size:19px;line-height:14px}
+ .quick-add:active{transform:scale(.96)}
+ .history-intro{padding:19px 17px}
+ .history-intro h2{font-size:19px}
+ .history-heart{font-size:53px}
+ .timeline-card{gap:9px}
+ .timeline-date{flex-basis:44px;height:52px}
+ .timeline-day{font-size:19px}
+ .timeline-main b{font-size:12px}
+ .timeline-total{font-size:12px}
+ .insight-grid{gap:9px}
+ .insight-card{padding:13px}
+ .insight-card strong{font-size:17px}
+ .detail-totals{gap:6px}
+ .detail-totals>div{padding:10px 7px}
+ .detail-totals b{font-size:12px}
+ .toast{bottom:calc(92px + env(safe-area-inset-bottom))}
+}
+@media(prefers-reduced-motion:reduce){.history-heart{animation:none!important}.timeline-card,.nav button,.quick-add{transition:none!important}}
+
+
+/* v5 mobile layout fixes: month picker overflow and breathing room below hero */
+#tab-home > .grid{
+  margin-top:18px;
+  gap:16px;
+}
+#tab-stats,
+#tab-stats .card,
+#tab-stats .field{
+  min-width:0;
+  max-width:100%;
+}
+#tab-stats .field input[type="month"]{
+  display:block;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  min-inline-size:0;
+  max-inline-size:100%;
+  box-sizing:border-box;
+  -webkit-appearance:none;
+  appearance:none;
+  padding:12px 14px;
+  font-size:16px;
+  line-height:1.4;
+  overflow:hidden;
+}
+@media(max-width:560px){
+  #tab-home > .grid{
+    margin-top:20px;
+    gap:16px;
+  }
+  #tab-stats .card{
+    padding:15px;
+    overflow:hidden;
+  }
+  #tab-stats .field{
+    width:100%;
+  }
+  #tab-stats .field input[type="month"]{
+    padding-left:12px;
+    padding-right:12px;
+    text-align:center;
+  }
+}
+
+
+/* V6 motion polish: subtle, fast, and mobile-friendly */
+@keyframes pageFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes cardFloatIn { 0% { opacity: 0; transform: translateY(12px) scale(.99); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes headerShimmer { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+@keyframes numberPop { 0% { opacity: .65; transform: translateY(4px) scale(.99); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes tapRipple { 0% { box-shadow: 0 0 0 0 rgba(49,130,246,.22); } 100% { box-shadow: 0 0 0 9px rgba(49,130,246,0); } }
+@keyframes tinyHeart { 0%,100% { transform: scale(1); } 35% { transform: scale(1.18) rotate(-5deg); } 65% { transform: scale(1.08) rotate(4deg); } }
+@keyframes toastIn { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes settleGlow { 0%,100% { box-shadow: 0 8px 24px rgba(49,130,246,.07); } 50% { box-shadow: 0 10px 28px rgba(49,130,246,.14); } }
+
+body.motion-ready .hero { animation: pageFadeUp .55s cubic-bezier(.2,.8,.2,1) both; }
+body.motion-ready .stat { animation: cardFloatIn .42s cubic-bezier(.2,.8,.2,1) both; }
+body.motion-ready .stat:nth-child(2) { animation-delay: .05s; }
+body.motion-ready .stat:nth-child(3) { animation-delay: .10s; }
+body.motion-ready .stat:nth-child(4) { animation-delay: .15s; }
+body.motion-ready .card, body.motion-ready .settle-card, body.motion-ready .insight-card { animation: cardFloatIn .42s cubic-bezier(.2,.8,.2,1) both; }
+.hero { background-size: 180% 180%; transition: box-shadow .25s ease, background-position .7s ease; }
+.hero:hover { background-position: 100% 50%; }
+.stat { transition: transform .2s ease, box-shadow .2s ease; }
+.stat:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(25,35,55,.07); }
+button, .nav button, .tab-button { transition: transform .16s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease; }
+button:active, .nav button:active, .tab-button:active { transform: scale(.975); }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid rgba(49,130,246,.28); outline-offset: 2px; }
+body.motion-ready .settle-card { animation: cardFloatIn .45s ease-out both, settleGlow 4s ease-in-out 1s infinite; }
+.settle-icon svg { transition: transform .25s ease; }
+.settle-card:hover .settle-icon svg { transform: rotate(-5deg) scale(1.05); }
+.balance-heart { animation: tinyHeart 1.8s ease-in-out infinite; }
+.toast { animation: toastIn .24s cubic-bezier(.2,.8,.2,1) both; }
+.barfill { transform-origin: left center; animation: pageFadeUp .45s ease-out both; }
+.entry, .date-record, .history-item { transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease; }
+.entry:hover, .date-record:hover, .history-item:hover { transform: translateY(-2px); }
+button.primary:hover, .primary:hover { box-shadow: 0 7px 18px rgba(49,130,246,.22); }
+@media (max-width: 600px) {
+  body.motion-ready .stat, body.motion-ready .card, body.motion-ready .settle-card, body.motion-ready .insight-card { animation-duration: .28s; }
+  .stat:hover, .entry:hover, .date-record:hover, .history-item:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+
+
+/* V7: soft sky-blue to blush-pink gradient hero */
+.hero{
+  background:linear-gradient(112deg,#e6f2ff 0%,#edf2ff 42%,#f8eaf1 100%)!important;
+  color:#202938!important;
+  box-shadow:0 12px 34px rgba(112,145,190,.10)!important;
+  border:1px solid rgba(208,224,247,.8);
+}
+.hero h1,.hero h2,.hero p,.hero .eyebrow,.hero .subtitle,.hero .status,.hero .save-status{
+  color:#26384f!important;
+}
+.hero .eyebrow{color:#6d8fbd!important}
+.hero .person,.hero .person-pill,.hero .people span{
+  color:#3b5d88!important;
+  background:rgba(255,255,255,.55)!important;
+  border-color:rgba(255,255,255,.85)!important;
+}
+.hero:after,.hero:before{
+  opacity:.22;
+}
+.hero .hero-mark,.hero .watermark{
+  color:rgba(105,143,198,.14)!important;
+}
+@media(max-width:600px){
+  .hero{background:linear-gradient(145deg,#e6f2ff 0%,#edf2ff 44%,#f8eaf1 100%)!important}
+}
+
+
+/* V8 contrast fix and decorative heart */
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+.hero h1,.hero h2,.hero p,.hero .subtitle,.hero .status,.hero .save-status,
+.hero .person,.hero .person-pill,.hero .people span{
+  color:#26384f!important;
+}
+.hero .eyebrow{color:#6d8fbd!important}
+.hero .person,.hero .person-pill,.hero .people span{
+  background:rgba(255,255,255,.68)!important;
+  border-color:rgba(255,255,255,.95)!important;
+  box-shadow:0 2px 8px rgba(68,100,145,.06);
+}
+.hero .person svg,.hero .person-pill svg,.hero .people svg,
+.hero .person .icon,.hero .person-pill .icon{
+  color:#456b9c!important;
+  stroke:currentColor;
+}
+.hero .save-status:before,.hero .status:before{
+  background:#6b93c7!important;
+}
+.hero .hero-heart-decor{
+  position:absolute;right:34px;top:30px;width:clamp(64px,10vw,112px);height:clamp(64px,10vw,112px);
+  color:#d979a0;opacity:.72;pointer-events:none;
+  filter:drop-shadow(0 5px 10px rgba(198,112,151,.10));
+  animation:heroHeartFloat 3.6s ease-in-out infinite;
+}
+.hero .hero-heart-decor svg{display:block;width:100%;height:100%}
+@keyframes heroHeartFloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-7px) rotate(3deg)}}
+@media(max-width:600px){
+  .hero .hero-heart-decor{right:18px;top:18px;width:58px;height:58px;opacity:.55}
+}
+@media(prefers-reduced-motion:reduce){.hero .hero-heart-decor{animation:none}}
+
+
+/* V9 fix: ensure names and save status have readable contrast */
+.hero .people .person,
+.hero .people .person b,
+.hero .sync{
+  color:#354f70!important;
+}
+.hero .people .person{
+  background:rgba(255,255,255,.72)!important;
+  border-color:rgba(255,255,255,.96)!important;
+}
+.hero .people .person b{font-weight:750!important}
+.hero .sync{color:#536c8d!important}
+.hero .sync::first-letter{color:#6b93c7}
+.hero .hero-heart-decor{
+  display:block!important;
+  z-index:0;
+}
+.hero > :not(.hero-heart-decor){position:relative;z-index:1}
+
+
+/* V10 couple diary polish: warm ivory, rose and lavender */
+:root{--bg:#fff9f6;--paper:#fffefd;--ink:#34313a;--muted:#8c858b;--line:#f0e4e7;--blue:#7399cf;--green:#7ba995;--rose:#d7779a;--gold:#c79c69}
+body{background:linear-gradient(180deg,#fffaf7 0%,#f8f7fc 56%,#fff8f6 100%);color:var(--ink)}
+.wrap{max-width:1120px}
+.hero{background:linear-gradient(120deg,#e8f2ff 0%,#f0edfb 52%,#fbe8ef 100%)!important;color:#29364c!important;box-shadow:0 12px 32px rgba(130,132,171,.10)!important;border:1px solid rgba(255,255,255,.8)}
+.hero h1,.hero p,.hero .people .person,.hero .people .person b,.hero .sync{color:#35465e!important}
+.hero .people .person{background:rgba(255,255,255,.72)!important;border-color:#fff!important}
+.hero .hero-heart-decor{color:#d7779a!important;opacity:.75}
+.nav button.active{background:#272c38!important;color:#fff!important;box-shadow:0 7px 18px rgba(39,44,56,.12)}
+.card,.stat,.settle,.insight-card{border-color:#f0e7e9;box-shadow:0 8px 26px rgba(91,76,89,.045)}
+.primary{background:linear-gradient(110deg,#d7779a,#c98db4)!important;color:white!important}
+.primary:hover{box-shadow:0 7px 18px rgba(215,119,154,.22)!important}
+.couple-welcome{margin-bottom:20px;padding:24px;background:linear-gradient(120deg,#eaf3ff 0%,#f2effb 54%,#fbeaf0 100%);border:1px solid #e7e6f6;border-radius:26px;position:relative;overflow:hidden}
+.couple-welcome-top{display:flex;justify-content:space-between;align-items:center}
+.couple-kicker{font-size:11px;font-weight:850;letter-spacing:.18em;color:#7892bd}
+.couple-heart{font-size:42px;line-height:1;color:#d7779a;opacity:.9}
+.couple-welcome h2{margin:9px 0 4px;font-size:clamp(25px,4vw,34px);letter-spacing:-.045em;color:#29364c}
+.couple-name-heart{color:#d7779a}
+.couple-welcome p{margin:0;color:#78849a;font-size:14px}
+.couple-mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:19px}
+.couple-mini-stats>div{background:rgba(255,255,255,.68);border:1px solid rgba(255,255,255,.9);border-radius:15px;padding:12px 14px;min-width:0}
+.couple-mini-stats small{display:block;color:#8290a5;font-size:11px;margin-bottom:5px}
+.couple-mini-stats strong{display:block;color:#35465e;font-size:15px;overflow-wrap:anywhere}
+.memory-editor{margin-bottom:18px}
+.memory-helper{color:var(--muted);font-size:13px;margin:-4px 0 16px}
+.field-help{display:block;color:var(--muted);font-size:11px;line-height:1.5;margin-top:5px}
+textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font:inherit;resize:vertical;background:#fff;color:var(--ink)}
+.memory-preview img,.memory-photo{display:block;width:100%;max-height:300px;object-fit:cover;border-radius:16px;margin:10px 0}
+.saved-memory{margin-top:14px}
+.memory-saved-card{border:1px solid #f0e3e8;background:linear-gradient(120deg,#fff 0%,#fff8fb 100%);border-radius:18px;padding:14px;margin-top:12px}
+.memory-saved-card h3{margin:0 0 5px;font-size:15px;color:#3d3740}
+.memory-saved-card p{white-space:pre-wrap;color:#77717a;font-size:13px;line-height:1.65;margin:8px 0}
+.memory-meta{font-size:12px;color:#a17d8d}
+.memory-actions{display:flex;justify-content:flex-end;gap:8px}
+.memory-actions button,.wish-actions button{font-size:12px;padding:7px 10px}
+.wishlist-intro{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px;margin-bottom:18px;border-radius:26px;background:linear-gradient(120deg,#eaf3ff 0%,#f2effb 52%,#fbe8ef 100%);border:1px solid #e7e6f6}
+.wishlist-intro h2{margin:7px 0 6px;color:#29364c;font-size:clamp(22px,4vw,30px);letter-spacing:-.04em}
+.wishlist-intro p{margin:0;color:#78849a;font-size:13px;line-height:1.6}
+.wishlist-heart{font-size:62px;color:#d7779a;line-height:1;flex-shrink:0}
+.wishlist-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.wish-card{background:#fff;border:1px solid #f0e4e7;border-radius:20px;padding:16px;box-shadow:0 7px 20px rgba(91,76,89,.035);min-width:0}
+.wish-card.done{background:#f5faf6;border-color:#dceee3}
+.wish-top{display:flex;gap:10px;align-items:flex-start}
+.wish-icon{width:40px;height:40px;display:grid;place-items:center;background:#f9e7ee;border-radius:13px;font-size:20px;flex-shrink:0}
+.wish-card.done .wish-icon{background:#e0f1e6}
+.wish-main{flex:1;min-width:0}
+.wish-main h3{font-size:15px;margin:1px 0 5px;overflow-wrap:anywhere;color:#39343b}
+.wish-main p{font-size:12px;color:#91868e;line-height:1.55;margin:0;overflow-wrap:anywhere}
+.wish-tag{display:inline-block;font-size:10px;color:#b36182;background:#fbedf2;padding:4px 8px;border-radius:999px;margin-top:8px}
+.wish-budget{font-size:13px;font-weight:800;color:#4b5669;margin-top:10px}
+.wish-actions{display:flex;justify-content:flex-end;gap:6px;margin-top:13px;flex-wrap:wrap}
+.wish-actions .done-btn{background:#edf7f0;color:#3e8660;border:1px solid #d7ecdf}
+.wish-card.done .wish-actions .done-btn{background:#fff;color:#718078}
+.empty-soft{border:1px dashed #e7d9e0;background:rgba(255,255,255,.6);padding:24px;border-radius:18px;text-align:center;color:#9b8d96;font-size:13px;line-height:1.7;grid-column:1/-1}
+@media(max-width:650px){
+ .couple-welcome{padding:19px;border-radius:22px}
+ .couple-mini-stats{gap:8px}
+ .couple-mini-stats>div{padding:11px}
+ .wishlist-intro{padding:19px;border-radius:22px}
+ .wishlist-heart{font-size:48px}
+ .wishlist-items{grid-template-columns:1fr}
+ .nav{gap:4px;overflow-x:auto}
+ .nav button{flex:0 0 auto}
+}
+
+
+/* v13 fix: couple card replaces the old hero without breaking existing JS hooks */
+.couple-welcome.card{
+  display:block;position:relative;overflow:hidden;box-sizing:border-box;width:100%;
+  margin:0 0 22px;padding:26px 28px;border-radius:28px;
+  background:linear-gradient(120deg,#e8f2ff 0%,#f0edfb 54%,#fbe8ef 100%);
+  border:1px solid rgba(255,255,255,.9);color:#29364c;
+  box-shadow:0 12px 30px rgba(130,132,171,.08);
+}
+.couple-welcome-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.couple-kicker{font-size:12px;font-weight:850;letter-spacing:.18em;color:#6f91bf}
+.couple-heart{font-size:clamp(36px,6vw,58px);line-height:1;color:#d7779a}
+.couple-welcome h1{margin:14px 0 7px;font-size:clamp(27px,4vw,38px);letter-spacing:-.045em;color:#29364c}
+.couple-name-heart{color:#d7779a}
+.couple-welcome p{margin:0;color:#45566f;font-size:clamp(14px,2vw,17px)}
+.couple-mini-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
+.couple-mini-stats>div{background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.95);border-radius:17px;padding:13px 15px;min-width:0}
+.couple-mini-stats small{display:block;color:#7e8ba0;font-size:12px;margin-bottom:5px}
+.couple-mini-stats strong{display:block;color:#35465e;font-size:17px;overflow-wrap:anywhere}
+.settle-card:before{content:none!important}
+.settle-icon,.needs-transfer .settle-icon,.settle-title{animation:none!important}
+@media(max-width:650px){
+  .couple-welcome.card{padding:20px;border-radius:23px;margin-bottom:18px}
+  .couple-mini-stats{gap:8px}
+  .couple-mini-stats>div{padding:11px}
+  .couple-mini-stats strong{font-size:15px}
+}
+
+
+/* v18: remove distracting blue flashing/glow from settlement card on all devices */
+.settle-card,
+.settle-card::before,
+.settle-card::after,
+.settle-card * {
+  animation: none !important;
+  transition: none !important;
+}
+.settle-card::before,
+.settle-card::after {
+  content: none !important;
+  display: none !important;
+  opacity: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+.settle-card,
+.settle-card:hover,
+.settle-card:focus-within {
+  box-shadow: none !important;
+  filter: none !important;
+}
+@media (max-width: 768px) {
+  .settle-card,
+  .settle-card::before,
+  .settle-card::after,
+  .settle-card * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .settle-card::before,
+  .settle-card::after {
+    display: none !important;
+    content: none !important;
+    opacity: 0 !important;
+    background: none !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="couple-welcome card">
+  <div class="couple-welcome-top">
+    <span class="couple-kicker">OUR LITTLE WORLD</span>
+    <span class="couple-heart" aria-hidden="true">♡</span>
+  </div>
+  <h1><span id="coupleNameA">시연</span> <span class="couple-name-heart">♡</span> <span id="coupleNameB">학선</span></h1>
+  <p>함께한 순간을 차곡차곡 기록해요.</p>
+  <div class="couple-mini-stats">
+    <div><small>우리가 함께한 날</small><strong id="togetherDays">89일째</strong></div>
+    <div><small>이번 달 데이트</small><strong id="homeDateCount">0회</strong></div>
+  </div>
+  <span id="nameA" hidden>시연</span><span id="nameB" hidden>학선</span>
+  <span id="syncStatus" hidden>● 이 기기에 자동 저장 중</span>
+</header>
+<nav class="nav" aria-label="주요 메뉴">
+<button class="active" data-tab="home"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3.5 10 8.5-7 8.5 7v9a1.5 1.5 0 0 1-1.5 1.5h-14A1.5 1.5 0 0 1 3.5 19v-9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><span>오늘</span></button>
+<button data-tab="history"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M7.5 3v4M16.5 3v4M3.5 10h17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>데이트 기록</span></button>
+<button data-tab="stats"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V11M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>월별 통계</span></button>
+<button data-tab="wishlist"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7.5-4.5-7.5-10A4.2 4.2 0 0 1 12 7.2 4.2 4.2 0 0 1 19.5 10C19.5 15.5 12 20 12 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>가고 싶은 곳</span></button>
+<button data-tab="settings"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="m19.4 15 .1.1 1.1 1.9-2 3.4-2.2-.5a8 8 0 0 1-1.5.9l-.4 2.2h-4l-.4-2.2a8 8 0 0 1-1.5-.9l-2.2.5-2-3.4 1.1-1.9A8 8 0 0 1 5.5 13l-2-1v-4l2-.8a8 8 0 0 1 .8-1.6L5.2 3.7l3.4-2 1.9 1.1a8 8 0 0 1 1.5-.1l1-2h4l.8 2a8 8 0 0 1 1.6.8l2.1-.8 2 3.4-1.1 1.9a8 8 0 0 1 .1 1.5l2 1v4l-2 1a8 8 0 0 1-1.1 1.5Z" transform="translate(-1 1) scale(.92)" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span><span>설정</span></button>
+</nav>
+<section id="tab-home">
+<div class="grid">
+<div class="stat"><div class="label">데이트 총비용</div><div class="value" id="total">₩0</div><div class="sub" id="countLabel">결제 0건</div></div>
+<div class="stat"><div class="label"><span id="aLabel">시연</span> 결제</div><div class="value" id="paidA">₩0</div><div class="sub">직접 결제한 금액</div></div>
+<div class="stat"><div class="label"><span id="bLabel">학선</span> 결제</div><div class="value" id="paidB">₩0</div><div class="sub">직접 결제한 금액</div></div>
+<div class="stat"><div class="label">1인당 부담액</div><div class="value" id="share">₩0</div><div class="sub">총비용을 반반 부담</div></div>
+</div>
+<div class="settle settle-card">
+  <div class="settle-top">
+    <div class="settle-icon" id="settleIcon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H20v14H6.5A2.5 2.5 0 0 1 4 16.5v-9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 8h13a3 3 0 0 0 3-3M16 12h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="16.5" cy="12" r=".8" fill="currentColor"/></svg>
+    </div>
+    <div class="settle-heading">
+      <div class="eyebrow">SETTLEMENT</div>
+      <div class="settle-kicker" id="settleKicker">오늘의 정산 요약</div>
+    </div>
+    <span class="settle-status" id="settleStatus">계산 대기</span>
+  </div>
+  <div id="settlementText" class="settle-title">아직 정산할 금액이 없어요.</div>
+  <div id="settlementSub" class="settle-sub">결제 내역을 추가하면 송금할 금액을 바로 계산해요.</div>
+  <div class="settle-bottom">
+    
+    <button class="secondary settle-copy" id="copySettlement"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>정산 결과 복사</button>
+  </div>
+</div>
+<div class="section-head"><h2>결제 내역 추가</h2><span id="dateBadge">오늘</span></div>
+<div class="card"><form id="entryForm"><div class="formgrid">
+<div class="field"><label for="date">데이트 날짜</label><input type="date" id="date" required></div>
+<div class="field"><label for="payer">결제한 사람</label><select id="payer"><option value="a">시연</option><option value="b">학선</option></select></div>
+<div class="field full"><label for="item">항목</label><input id="item" maxlength="80" placeholder="예: 카페, 저녁 식사, 영화" required></div>
+<div class="field"><label for="amount">금액 (원)</label><input id="amount" type="number" min="1" step="1" inputmode="numeric" placeholder="15000" required></div>
+<div class="field"><label for="category">분류</label><select id="category"><option value="식사">식사</option><option value="카페">카페</option><option value="교통">교통</option><option value="문화생활">문화생활</option><option value="쇼핑">쇼핑</option><option value="여행">여행</option><option value="기타">기타</option></select></div>
+<div class="field full"><button class="primary" id="submitEntry" type="submit">＋ 결제 내역 추가</button></div>
+</div></form></div>
+<div class="section-head"><h2 id="listTitle">오늘의 결제</h2><span id="listCount">0건</span></div>
+<div class="card" id="entries"></div>
+</section>
+<section id="tab-history" class="hidden">
+<div class="history-intro"><div><div class="eyebrow">OUR MEMORIES</div><h2>함께한 데이트 기록</h2><p>비용뿐 아니라 장소와 사진, 오늘의 감상도 함께 남겨요.</p></div><div class="history-heart" aria-hidden="true">♡</div></div>
+<div class="memory-editor card">
+  <div class="section-head"><h2>오늘의 추억 한 장</h2><span>사진과 메모</span></div>
+  <p class="memory-helper">데이트 날짜를 선택하고 장소와 짧은 감상을 남겨보세요.</p>
+  <div class="formgrid">
+    <div class="field"><label for="memoryDate">데이트 날짜</label><input type="date" id="memoryDate"></div>
+    <div class="field"><label for="memoryPlace">장소</label><input id="memoryPlace" maxlength="80" placeholder="예: 성수동 카페"></div>
+    <div class="field full"><label for="memoryNote">오늘의 한 줄</label><textarea id="memoryNote" maxlength="500" rows="3" placeholder="오늘 가장 좋았던 순간은?"></textarea></div>
+    <div class="field full"><label for="memoryPhoto">사진 추가 (선택)</label><input type="file" id="memoryPhoto" accept="image/*"><small class="field-help">사진은 브라우저에 저장되며, 저장 용량을 줄이기 위해 자동으로 축소돼요.</small></div>
+    <div class="field full"><div id="memoryPreview" class="memory-preview hidden"></div><button class="primary" type="button" id="saveMemory">♡ 추억 저장하기</button></div>
+  </div>
+  <div id="savedMemory" class="saved-memory"></div>
+</div>
+<div class="history-overview grid"><div class="stat"><div class="label">기록한 데이트</div><div class="value" id="historyDateCount">0회</div></div><div class="stat"><div class="label">전체 데이트 비용</div><div class="value" id="historySpendTotal">₩0</div></div></div>
+<div class="section-head"><h2>데이트 타임라인</h2><span>날짜를 선택해 상세 보기</span></div><div class="card"><div id="historyList"></div></div>
+<div class="section-head"><h2>선택한 데이트</h2><button class="ghost" id="showAll">오늘로 돌아가기</button></div><div class="card" id="historyDetail"><div class="empty">기록을 선택하면 내역이 보여요.</div></div>
+</section>
+<section id="tab-stats" class="hidden"><div class="section-head"><h2>월별 지출 통계</h2><span>저장된 전체 기록 기준</span></div><div class="card"><div class="field"><label for="monthPick">조회할 월</label><input type="month" id="monthPick"></div><div class="grid stats-primary" style="margin-top:13px"><div class="stat"><div class="label">월 총비용</div><div class="value" id="monthTotal">₩0</div><div class="sub">이번 달 함께 쓴 금액</div></div><div class="stat"><div class="label">데이트 횟수</div><div class="value" id="monthDates">0회</div><div class="sub">기록된 날짜 기준</div></div></div><div class="section-head"><h2>이번 달 인사이트</h2><span>지난달과 비교</span></div><div class="grid insight-grid"><div class="insight-card"><div class="insight-icon blue">↗</div><div class="insight-label">데이트 1회 평균</div><strong id="avgPerDate">₩0</strong><small id="avgHint">데이트별 평균 지출</small></div><div class="insight-card"><div class="insight-icon pink">♡</div><div class="insight-label">가장 많이 쓴 항목</div><strong id="topCategory">기록 없음</strong><small id="topCategorySpend">지출이 기록되면 표시돼요.</small></div><div class="insight-card insight-wide"><div class="insight-icon green">⌁</div><div class="insight-label">지난달 대비 지출</div><strong id="monthCompare">비교할 기록이 없어요</strong><small id="monthCompareHint">이전 달과 비교해 볼게요.</small></div></div><div class="section-head"><h2>결제자별 지출</h2></div><div id="monthPayers"></div><div class="section-head"><h2>분류별 지출</h2></div><div id="categoryStats"></div></div></section>
+<section id="tab-wishlist" class="hidden">
+  <div class="wishlist-intro">
+    <div><div class="eyebrow">OUR NEXT ADVENTURE</div><h2>우리 다음엔 여기 가자</h2><p>함께 가고 싶은 장소를 모아두고, 다녀온 곳은 추억으로 남겨요.</p></div>
+    <div class="wishlist-heart" aria-hidden="true">♡</div>
+  </div>
+  <div class="card wishlist-form-card">
+    <form id="wishlistForm">
+      <div class="formgrid">
+        <div class="field full"><label for="wishPlace">장소 이름</label><input id="wishPlace" maxlength="100" placeholder="예: 한강 피크닉, 새로 생긴 전시" required></div>
+        <div class="field"><label for="wishType">분류</label><select id="wishType"><option>카페</option><option>식당</option><option>전시·문화</option><option>여행</option><option>산책</option><option>기타</option></select></div>
+        <div class="field full"><label for="wishMemo">메모 (선택)</label><input id="wishMemo" maxlength="180" placeholder="가고 싶은 이유, 위치, 참고 링크 등"></div>
+        <div class="field full"><button class="primary" type="submit">＋ 버킷리스트에 추가</button></div>
+      </div>
+    </form>
+  </div>
+  <div class="section-head"><h2>우리의 버킷리스트</h2><span id="wishCount">0곳</span></div>
+  <div id="wishlistItems" class="wishlist-items"></div>
+</section>
+<section id="tab-settings" class="hidden"><div class="section-head"><h2>공유 및 백업</h2></div><div class="card"><p style="font-size:13px;line-height:1.8;color:var(--muted);margin-top:0">카카오톡으로 정산 요약을 보내거나, 기록 전체를 파일로 백업할 수 있어요.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="secondary" id="shareKakao">카카오톡 / 공유하기</button><button class="secondary" id="exportData">기록 백업하기</button><button class="secondary" id="importBtn">백업 불러오기</button><button class="secondary danger" id="clearData">전체 기록 삭제</button></div><input id="importFile" type="file" accept=".json,application/json" class="hidden"><div class="notice"><b>기기 내 저장 안내</b><br>이 버전은 외부 데이터베이스 없이 브라우저에 기록을 저장해요. 다른 휴대폰으로 기록을 옮기려면 ‘기록 백업하기’로 JSON 파일을 저장한 뒤, 상대방 기기에서 ‘백업 불러오기’를 이용해 주세요. 실시간 자동 공유는 지원하지 않아요.</div></div>
+</section>
+<p class="foot">우리의 데이트 기록은 브라우저에 자동 저장돼요. 브라우저 데이터 삭제 전 백업 파일을 저장해 주세요.<br>정산은 모든 결제 금액을 두 사람이 50:50으로 부담하는 기준입니다. 사진과 메모, 버킷리스트도 이 기기에 저장돼요.</p>
+</div>
+<button id="quickAdd" class="quick-add" type="button" aria-label="결제 내역 빠르게 추가"><span>＋</span><b>기록 추가</b></button><div id="toast" class="toast hidden"></div>
+<div id="modalRoot"></div>
+<script type="module">
+const $=id=>document.getElementById(id);
+const today=()=>new Date().toLocaleDateString('sv-SE');
+const money=n=>'₩'+Math.round(n||0).toLocaleString('ko-KR');
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const FIRST_MET_DATE='2026-08-01';
+let state={names:['시연','학선'],entries:[],editing:null,selectedDate:null,anniversaryDate:FIRST_MET_DATE,memories:{},wishlist:[]};
+let toastTimer;
+function toast(s){$('toast').textContent=s;$('toast').classList.remove('hidden');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.add('hidden'),2600)}
+function load(){try{const s=JSON.parse(localStorage.getItem('dateLedgerV1')||'null');if(s)state={...state,...s};}catch(e){}}
+function save(){localStorage.setItem('dateLedgerV1',JSON.stringify({names:state.names,entries:state.entries,anniversaryDate:state.anniversaryDate||'',memories:state.memories||{},wishlist:state.wishlist||[]}));}
+function totals(entries){let a=0,b=0;entries.forEach(e=>e.payer==='a'?a+=Number(e.amount):b+=Number(e.amount));return {a,b,total:a+b,share:(a+b)/2,diff:Math.round((a-b)/2)}}
+function dateEntries(date){return state.entries.filter(e=>e.date===date).sort((x,y)=>y.createdAt-x.createdAt)}
+function updateNames(){ $('nameA').textContent=state.names[0];$('nameB').textContent=state.names[1];$('aLabel').textContent=state.names[0];$('bLabel').textContent=state.names[1];if($('personA'))$('personA').value=state.names[0];if($('personB'))$('personB').value=state.names[1];$('payer').innerHTML=`<option value="a">${esc(state.names[0])}</option><option value="b">${esc(state.names[1])}</option>`}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function settlement(t){if(!t.total)return ['아직 정산할 금액이 없어요.','결제 내역을 추가하면 자동으로 계산돼요.'];if(t.diff===0)return ['서로 주고받을 금액이 없어요.','두 사람이 같은 금액을 부담했어요.'];let sender=t.diff>0?state.names[1]:state.names[0],receiver=t.diff>0?state.names[0]:state.names[1];return [`${sender} → ${receiver}에게 ${money(Math.abs(t.diff))} 보내기`,`결제 금액 차이를 반으로 나눈 정산 금액이에요.`]}
+function renderHome(){const es=dateEntries($('date').value||today()),t=totals(es);$('total').textContent=money(t.total);$('paidA').textContent=money(t.a);$('paidB').textContent=money(t.b);$('share').textContent=money(t.share);$('countLabel').textContent=`결제 ${es.length}건`;$('dateBadge').textContent=$('date').value||today();let st=settlement(t);const settleBox=document.querySelector('.settle');const balanced=t.total>0&&t.diff===0;const pending=t.total===0;settleBox.classList.toggle('is-balanced',balanced);settleBox.classList.toggle('is-pending',pending);settleBox.classList.toggle('needs-transfer',!pending&&!balanced);$('settleStatus').textContent=pending?'기록 대기':balanced?'정산 완료':'송금 필요';$('settleKicker').textContent=pending?'데이트 비용 정리':balanced?'깔끔하게 정산됐어요':'송금할 금액을 확인해요';$('settleIcon').innerHTML=balanced?'<svg viewBox="0 0 24 24" fill="none"><path d="M20.5 8.8c0 5.1-8.5 10-8.5 10s-8.5-4.9-8.5-10A4.5 4.5 0 0 1 12 6.1a4.5 4.5 0 0 1 8.5 2.7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.8 11.7 2.1 2.1 4.5-4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>':pending?'<svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="6" width="17" height="13" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M7 14h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>':'<svg viewBox="0 0 24 24" fill="none"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5" cy="12" r="2" fill="currentColor"/></svg>';$('settlementText').innerHTML=(balanced?'<span class="balance-heart">♥</span>':'')+esc(st[0]);$('settlementSub').textContent=st[1];$('listTitle').textContent=($('date').value===today()?'오늘':$('date').value)+'의 결제';$('listCount').textContent=es.length+'건';
+if(!es.length){$('entries').innerHTML='<div class="empty">아직 기록이 없어요.<br>첫 결제 내역을 추가해 보세요.</div>';return}
+$('entries').innerHTML=es.map(e=>`<div class="entry"><div class="emoji">${({'식사':'🍽️','카페':'☕','교통':'🚇','문화생활':'🎬','쇼핑':'🛍️','여행':'🧳','기타':'♡'})[e.category]||'♡'}</div><div class="entry-main"><div class="entry-title">${esc(e.item)}</div><div class="entry-meta">${esc(e.category)} · ${esc(state.names[e.payer==='a'?0:1])} 결제</div></div><div class="entry-right"><div class="amount">${money(e.amount)}</div><div class="actions"><button data-edit="${e.id}">수정</button><button class="danger" data-delete="${e.id}">삭제</button></div></div></div>`).join('');
+}
+function renderHistory(){
+let dates=[...new Set(state.entries.map(e=>e.date))].sort((a,b)=>b.localeCompare(a));
+const allTotal=totals(state.entries).total;
+$('historyDateCount').textContent=dates.length+'회';
+$('historySpendTotal').textContent=money(allTotal);
+$('historyList').innerHTML=dates.length?dates.map(d=>{
+  let es=dateEntries(d),t=totals(es),st=settlement(t);
+  const sender=t.diff>0?state.names[1]:state.names[0];
+  const receiver=t.diff>0?state.names[0]:state.names[1];
+  const balanced=t.total>0&&t.diff===0;
+  const status=balanced?'정산 완료':t.total===0?'기록 없음':`${sender} → ${receiver}`;
+  const cats=[...new Set(es.map(e=>e.category))].slice(0,3).map(c=>({'식사':'🍽️','카페':'☕','교통':'🚇','문화생활':'🎬','쇼핑':'🛍️','여행':'🧳','기타':'♡'})[c]||'♡').join(' ');
+  return `<button class="timeline-card ${state.selectedDate===d?'selected':''}" data-date="${d}" type="button"><span class="timeline-date"><span class="timeline-day">${esc(d.slice(8,10))}</span><span class="timeline-month">${esc(d.slice(0,7))}</span></span><span class="timeline-main"><b>${esc(d)} 데이트</b><small>${es.length}건의 결제 <span class="timeline-cats">${cats}</span></small><em class="${balanced?'done':''}">${esc(status)}</em></span><span class="timeline-total">${money(t.total)}<small>›</small></span></button>`;
+}).join(''):'<div class="empty">저장된 데이트 기록이 없어요.<br>결제 내역을 추가하면 여기에 추억이 쌓여요.</div>';
+if(state.selectedDate)renderHistoryDetail(state.selectedDate);
+}
+function renderHistoryDetail(d){
+const es=dateEntries(d),t=totals(es),st=settlement(t);
+const balanced=t.total>0&&t.diff===0;
+$('historyDetail').innerHTML=es.length?`<div class="detail-hero ${balanced?'detail-balanced':''}"><div class="detail-date"><span class="detail-calendar">♡</span><div><b>${esc(d)} 데이트</b><small>${es.length}건의 결제 기록</small></div></div><strong>${money(t.total)}</strong><small>총 데이트 비용</small></div><div class="detail-totals"><div><span>${esc(state.names[0])} 결제</span><b>${money(t.a)}</b></div><div><span>${esc(state.names[1])} 결제</span><b>${money(t.b)}</b></div><div><span>1인당 부담</span><b>${money(t.share)}</b></div></div><div class="detail-settlement"><span class="detail-status">${balanced?'♥ 정산 완료':'정산 결과'}</span><b>${esc(st[0])}</b><small>${esc(st[1])}</small></div><div class="detail-entry-list">${es.map(e=>`<div class="detail-entry"><span class="detail-entry-icon">${({'식사':'🍽️','카페':'☕','교통':'🚇','문화생활':'🎬','쇼핑':'🛍️','여행':'🧳','기타':'♡'})[e.category]||'♡'}</span><span class="detail-entry-main"><b>${esc(e.item)}</b><small>${esc(e.category)} / ${esc(state.names[e.payer==='a'?0:1])} 결제</small></span><strong>${money(e.amount)}</strong></div>`).join('')}</div><button class="secondary detail-copy" data-copy-date="${esc(d)}" type="button">이 데이트 정산 결과 복사</button>`:'<div class="empty">이 날짜에는 결제 내역이 없어요.</div>';
+}
+function renderStats(){
+const m=$('monthPick').value||today().slice(0,7),es=state.entries.filter(e=>e.date.startsWith(m)),t=totals(es),dates=new Set(es.map(e=>e.date));
+const [yy,mm]=m.split('-').map(Number);
+const prevDate=new Date(yy,mm-2,1);
+const prevMonth=`${prevDate.getFullYear()}-${String(prevDate.getMonth()+1).padStart(2,'0')}`;
+const prevEntries=state.entries.filter(e=>e.date.startsWith(prevMonth));
+const prevTotal=totals(prevEntries).total;
+$('monthTotal').textContent=money(t.total);$('monthDates').textContent=dates.size+'회';
+$('avgPerDate').textContent=dates.size?money(t.total/dates.size):money(0);
+$('avgHint').textContent=dates.size?`데이트 ${dates.size}회 기준 평균`:'데이트 기록이 생기면 계산돼요.';
+const cats={};es.forEach(e=>cats[e.category]=(cats[e.category]||0)+Number(e.amount));
+const sorted=Object.entries(cats).sort((a,b)=>b[1]-a[1]);
+$('topCategory').textContent=sorted.length?sorted[0][0]:'기록 없음';
+$('topCategorySpend').textContent=sorted.length?`${money(sorted[0][1])} 지출 (${t.total?Math.round(sorted[0][1]/t.total*100):0}%)`:'지출이 기록되면 표시돼요.';
+if(prevEntries.length){
+ const diff=t.total-prevTotal,rate=prevTotal?Math.round(diff/prevTotal*100):null;
+ $('monthCompare').textContent=diff===0?'지난달과 동일':`${diff>0?'▲':'▼'} ${money(Math.abs(diff))}`;
+ $('monthCompare').style.color=diff>0?'#d65363':diff<0?'#218653':'#191f28';
+ $('monthCompareHint').textContent=prevTotal?`지난달 ${money(prevTotal)} 대비 ${rate>0?'+':''}${rate}%`:`지난달 지출은 ${money(prevTotal)}이에요.`;
+}else{
+ $('monthCompare').textContent='비교할 기록이 없어요';
+ $('monthCompare').style.color='#191f28';
+ $('monthCompareHint').textContent=`${prevMonth} 기록을 추가하면 비교할 수 있어요.`;
+}
+$('monthPayers').innerHTML=`<div class="barrow"><span>${esc(state.names[0])}</span><div class="barbg"><div class="barfill" style="--bar-width:${t.total?t.a/t.total*100:0}%;width:${t.total?t.a/t.total*100:0}%"></div></div><b style="text-align:right">${money(t.a)}</b></div><div class="barrow"><span>${esc(state.names[1])}</span><div class="barbg"><div class="barfill" style="--bar-width:${t.total?t.b/t.total*100:0}%;width:${t.total?t.b/t.total*100:0}%"></div></div><b style="text-align:right">${money(t.b)}</b></div>`;
+$('categoryStats').innerHTML=sorted.length?sorted.map(([c,v])=>`<div class="barrow"><span>${esc(c)}</span><div class="barbg"><div class="barfill" style="--bar-width:${t.total?v/t.total*100:0}%;width:${t.total?v/t.total*100:0}%"></div></div><b style="text-align:right">${money(v)}</b></div>`).join(''):'<div class="empty">해당 월에 기록이 없어요.</div>';
+}
+
+function updateCoupleHome(){
+  $('coupleNameA').textContent=state.names[0];$('coupleNameB').textContent=state.names[1];$('nameA').textContent=state.names[0];$('nameB').textContent=state.names[1];
+  const m=today().slice(0,7), monthDates=new Set(state.entries.filter(e=>e.date.startsWith(m)).map(e=>e.date));
+  $('homeDateCount').textContent=monthDates.size+'회';
+  if(FIRST_MET_DATE){
+    state.anniversaryDate=FIRST_MET_DATE;
+    const start=new Date(FIRST_MET_DATE+'T00:00:00'),now=new Date(today()+'T00:00:00');
+    const days=Math.floor((now-start)/86400000)+1;
+    $('togetherDays').textContent=days>0?`${days.toLocaleString('ko-KR')}일째`:'날짜를 확인해 주세요';
+  }else $('togetherDays').textContent='처음 만난 날을 확인해 주세요';
+}
+function renderMemories(){
+  if(!$('savedMemory'))return;
+  const date=$('memoryDate').value||state.selectedDate||today();$('memoryDate').value=date;
+  const m=(state.memories||{})[date];
+  if(!m){$('savedMemory').innerHTML='<div class="empty-soft">이 날짜의 추억이 아직 없어요.<br>장소와 한 줄 감상을 남겨보세요.</div>';return}
+  $('memoryPlace').value=m.place||'';$('memoryNote').value=m.note||'';
+  $('savedMemory').innerHTML=`<div class="memory-saved-card"><div class="memory-meta">${esc(date)}의 추억</div><h3>${esc(m.place||'우리의 데이트')}</h3>${m.photo?`<img class="memory-photo" src="${m.photo}" alt="데이트 추억 사진">`:''}<p>${esc(m.note||'아직 메모가 없어요.')}</p><div class="memory-actions"><button class="secondary danger" type="button" id="deleteMemory">추억 삭제</button></div></div>`;
+  const del=$('deleteMemory');if(del)del.onclick=()=>{if(confirm('이 날짜의 추억을 삭제할까요?')){delete state.memories[date];save();renderMemories();toast('추억을 삭제했어요.')}};
+}
+function renderWishlist(){
+  if(!$('wishlistItems'))return;
+  const items=state.wishlist||[];$('wishCount').textContent=items.length+'곳';
+  if(!items.length){$('wishlistItems').innerHTML='<div class="empty-soft">아직 저장한 장소가 없어요.<br>둘이 가보고 싶은 곳을 하나씩 모아보세요. ♡</div>';return}
+  const icons={'카페':'☕','식당':'🍽️','전시·문화':'🎨','여행':'🧳','산책':'🌿','기타':'♡'};
+  $('wishlistItems').innerHTML=items.slice().sort((a,b)=>Number(a.done)-Number(b.done)||b.createdAt-a.createdAt).map(w=>`<article class="wish-card ${w.done?'done':''}"><div class="wish-top"><div class="wish-icon">${icons[w.type]||'♡'}</div><div class="wish-main"><h3>${esc(w.place)}</h3><p>${esc(w.memo||'함께 가보고 싶은 곳')}</p><span class="wish-tag">${esc(w.type)}${w.done?' · 다녀왔어요':''}</span></div></div><div class="wish-actions"><button type="button" class="secondary done-btn" data-wish-done="${w.id}">${w.done?'방문 취소':'다녀왔어요'}</button><button type="button" class="secondary danger" data-wish-delete="${w.id}">삭제</button></div></article>`).join('');
+}
+function compressImage(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();reader.onerror=reject;
+    reader.onload=()=>{const img=new Image();img.onerror=reject;img.onload=()=>{const max=1000,scale=Math.min(1,max/Math.max(img.width,img.height)),canvas=document.createElement('canvas');canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);resolve(canvas.toDataURL('image/jpeg',.78))};img.src=reader.result};
+    reader.readAsDataURL(file);
+  });
+}
+
+function render(){updateNames();renderHome();renderHistory();renderStats();updateCoupleHome();renderMemories();renderWishlist();$('syncStatus').textContent='● 이 기기에 자동 저장 중'}
+function switchTab(tab){document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));['home','history','stats','wishlist','settings'].forEach(t=>$('tab-'+t).classList.toggle('hidden',t!==tab));if(tab==='history'){renderHistory();renderMemories()}if(tab==='stats')renderStats();if(tab==='wishlist')renderWishlist();if(tab==='home')updateCoupleHome();window.scrollTo({top:0,behavior:'smooth'})}
+function resetForm(){state.editing=null;$('entryForm').reset();$('date').value=today();$('submitEntry').textContent='＋ 결제 내역 추가';$('payer').value='a'}
+function editEntry(id){let e=state.entries.find(x=>x.id===id);if(!e)return;state.editing=id;$('date').value=e.date;$('payer').value=e.payer;$('item').value=e.item;$('amount').value=e.amount;$('category').value=e.category;$('submitEntry').textContent='변경 내용 저장';switchTab('home');$('item').focus()}
+function deleteEntry(id){let e=state.entries.find(x=>x.id===id);if(!e)return;modal('내역을 삭제할까요?',`${e.item} ${money(e.amount)} 기록을 삭제합니다.`,()=>{state.entries=state.entries.filter(x=>x.id!==id);save();render();toast('내역을 삭제했어요.')})}
+function modal(title,body,yes){$('modalRoot').innerHTML=`<div class="modalback"><div class="modal"><h2>${esc(title)}</h2><p>${esc(body)}</p><div class="modal-actions"><button class="secondary" id="modalNo">취소</button><button class="primary" id="modalYes">확인</button></div></div></div>`;$('modalNo').onclick=()=>$('modalRoot').innerHTML='';$('modalYes').onclick=()=>{$('modalRoot').innerHTML='';yes()}}
+function shareText(){let es=dateEntries($('date').value||today()),t=totals(es),st=settlement(t);return `우리의 데이트 정산 💚\n날짜: ${$('date').value||today()}\n총비용: ${money(t.total)}\n${state.names[0]} 결제: ${money(t.a)}\n${state.names[1]} 결제: ${money(t.b)}\n1인당 부담: ${money(t.share)}\n정산: ${st[0]}\n\n${es.map(e=>`- ${e.item} / ${money(e.amount)} (${state.names[e.payer==='a'?0:1]} 결제)`).join('\n')}`}
+async function share(){let txt=shareText();if(navigator.share){try{await navigator.share({title:'우리의 데이트 정산',text:txt});return}catch(e){if(e.name==='AbortError')return}}try{await navigator.clipboard.writeText(txt);toast('정산 내용을 복사했어요. 카카오톡에 붙여넣어 주세요.')}catch(e){prompt('아래 내용을 복사해 카카오톡으로 공유하세요.',txt)}}
+function exportJson(){const blob=new Blob([JSON.stringify({version:2,names:state.names,entries:state.entries,anniversaryDate:state.anniversaryDate||'',memories:state.memories||{},wishlist:state.wishlist||[]},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`데이트정산_백업_${today()}.json`;a.click();URL.revokeObjectURL(url);toast('백업 파일을 저장했어요.')}
+load();$('date').value=today();$('monthPick').value=today().slice(0,7);updateNames();render();
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+$('entryForm').addEventListener('submit',e=>{e.preventDefault();const item=$('item').value.trim(),amount=Number($('amount').value),date=$('date').value;if(!item||!Number.isFinite(amount)||amount<=0||!date){toast('항목, 날짜, 금액을 확인해 주세요.');return}if(state.editing){let old=state.entries.find(x=>x.id===state.editing);if(old)Object.assign(old,{item,amount,date,payer:$('payer').value,category:$('category').value});toast('내역을 수정했어요.')}else{state.entries.push({id:uid(),item,amount,date,payer:$('payer').value,category:$('category').value,createdAt:Date.now()});toast('결제 내역을 추가했어요. ✓')}state.selectedDate=date;save();resetForm();render()});
+$('entries').addEventListener('click',e=>{const ed=e.target.closest('[data-edit]'),del=e.target.closest('[data-delete]');if(ed)editEntry(ed.dataset.edit);if(del)deleteEntry(del.dataset.delete)});
+$('date').addEventListener('change',renderHome);$('monthPick').addEventListener('change',renderStats);
+$('copySettlement').onclick=async()=>{try{await navigator.clipboard.writeText(shareText());toast('정산 결과를 복사했어요.')}catch(e){prompt('복사할 정산 결과',shareText())}};
+$('shareKakao').onclick=share;$('exportData').onclick=exportJson;$('importBtn').onclick=()=>$('importFile').click();
+$('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!Array.isArray(d.entries)||!Array.isArray(d.names))throw Error();modal('백업을 불러올까요?','현재 기록을 백업 파일의 기록으로 교체합니다.',()=>{state.entries=d.entries;state.names=d.names;state.anniversaryDate=FIRST_MET_DATE;state.memories=d.memories||{};state.wishlist=Array.isArray(d.wishlist)?d.wishlist:[];save();render();renderMemories();renderWishlist();updateCoupleHome();toast('백업을 불러왔어요.')})}catch(err){toast('올바른 백업 JSON 파일이 아니에요.')}e.target.value=''});
+$('clearData').onclick=()=>modal('전체 기록을 삭제할까요?','이 기기에 저장된 모든 결제 내역을 삭제합니다. 백업이 없다면 복구할 수 없어요.',()=>{state.entries=[];state.memories={};state.wishlist=[];save();render();toast('전체 기록을 삭제했어요.')});
+$('historyList').addEventListener('click',e=>{const b=e.target.closest('[data-date]');if(b){state.selectedDate=b.dataset.date;renderHistory();renderHistoryDetail(state.selectedDate);$('memoryDate').value=state.selectedDate;renderMemories();$('historyDetail').scrollIntoView({behavior:'smooth',block:'start'})}});
+$('historyDetail').addEventListener('click',async e=>{const b=e.target.closest('[data-copy-date]');if(!b)return;const d=b.dataset.copyDate,es=dateEntries(d),t=totals(es),st=settlement(t);const txt=`우리의 데이트 정산\\n날짜: ${d}\\n총비용: ${money(t.total)}\\n${state.names[0]} 결제: ${money(t.a)}\\n${state.names[1]} 결제: ${money(t.b)}\\n1인당 부담: ${money(t.share)}\\n정산: ${st[0]}\\n\\n${es.map(e=>`- ${e.item} / ${money(e.amount)} (${state.names[e.payer==='a'?0:1]} 결제)`).join('\\n')}`;try{await navigator.clipboard.writeText(txt);toast('데이트 정산 결과를 복사했어요.')}catch(err){prompt('복사할 정산 결과',txt)}});
+$('showAll').onclick=()=>{state.selectedDate=null;$('date').value=today();switchTab('home');render()};
+
+$('memoryDate').value=today();
+$('memoryDate').addEventListener('change',()=>{const d=$('memoryDate').value;if((state.memories||{})[d]){const m=state.memories[d];$('memoryPlace').value=m.place||'';$('memoryNote').value=m.note||'';$('memoryPreview').innerHTML=m.photo?`<img src="${m.photo}" alt="선택한 추억 사진">`:'';$('memoryPreview').classList.toggle('hidden',!m.photo)}else{$('memoryPlace').value='';$('memoryNote').value='';$('memoryPreview').innerHTML='';$('memoryPreview').classList.add('hidden')}renderMemories()});
+$('memoryPhoto').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;if(!file.type.startsWith('image/')){toast('이미지 파일을 선택해 주세요.');return}try{const data=await compressImage(file);$('memoryPreview').innerHTML=`<img src="${data}" alt="추억 사진 미리보기">`;$('memoryPreview').classList.remove('hidden');$('memoryPreview').dataset.photo=data}catch(err){toast('사진을 불러오지 못했어요.')}});
+$('saveMemory').addEventListener('click',()=>{const d=$('memoryDate').value||today(),old=(state.memories||{})[d]||{},photo=$('memoryPreview').dataset.photo||(old.photo||'');state.memories=state.memories||{};state.memories[d]={place:$('memoryPlace').value.trim(),note:$('memoryNote').value.trim(),photo,updatedAt:Date.now()};save();renderMemories();toast('오늘의 추억을 저장했어요. ♡');$('memoryPreview').dataset.photo=''});
+$('wishlistForm').addEventListener('submit',e=>{e.preventDefault();const place=$('wishPlace').value.trim();if(!place)return;state.wishlist=state.wishlist||[];state.wishlist.push({id:uid(),place,type:$('wishType').value,budget:0,memo:$('wishMemo').value.trim(),done:false,createdAt:Date.now()});save();$('wishlistForm').reset();renderWishlist();toast('버킷리스트에 추가했어요. ♡')});
+$('wishlistItems').addEventListener('click',e=>{const done=e.target.closest('[data-wish-done]'),del=e.target.closest('[data-wish-delete]');if(done){const w=state.wishlist.find(x=>x.id===done.dataset.wishDone);if(w){w.done=!w.done;save();renderWishlist();toast(w.done?'다녀온 곳으로 기록했어요.':'방문 상태를 되돌렸어요.')}}if(del){state.wishlist=state.wishlist.filter(x=>x.id!==del.dataset.wishDelete);save();renderWishlist();toast('장소를 삭제했어요.')}});
+
+$('quickAdd').addEventListener('click',()=>{switchTab('home');$('date').value=today();renderHome();$('entryForm').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>$('item').focus({preventScroll:true}),350)});
+</script>
+<script>document.addEventListener("DOMContentLoaded",()=>document.body.classList.add("motion-ready"));</script>
+</body></html>
